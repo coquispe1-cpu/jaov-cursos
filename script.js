@@ -1,1 +1,34 @@
-let cursoSeleccionado = ""; let precioCurso = 0; function seleccionarCurso(nombre, precio){ cursoSeleccionado = nombre; precioCurso = precio; document.getElementById("cursoSeleccionado").value = nombre; document.getElementById("precioCurso").value = precio; window.location.href="#registro"; } const form = document.getElementById("registroForm"); form.addEventListener("submit", async (e) => { e.preventDefault(); const nombre = form.nombre.value; const correo = form.correo.value; const response = await fetch("/create-checkout-session", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({nombre, correo, curso:cursoSeleccionado, precio:precioCurso}) }); const data = await response.json(); if(data.url) window.location.href = data.url; });
+let cursoSeleccionado = "";
+let precioCurso = 0;
+
+function seleccionarCurso(nombre, precio) {
+  cursoSeleccionado = nombre;
+  precioCurso = precio;
+  document.getElementById("cursoSeleccionado").value = nombre;
+  document.getElementById("precioCurso").value = precio;
+  window.location.href = "#registro";
+}
+
+const form = document.getElementById("registroForm");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const nombre = form.nombre.value;
+  const correo = form.correo.value;
+
+  const response = await fetch("/create-checkout-session", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      nombre,
+      correo,
+      curso: cursoSeleccionado,
+      precio: precioCurso
+    })
+  });
+
+  const datos = await response.json();
+  if (datos.url) {
+    window.location.href = datos.url;
+  }
+});
