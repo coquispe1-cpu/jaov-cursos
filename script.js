@@ -1,34 +1,26 @@
-let cursoSeleccionado = "";
-let precioCurso = 0;
+let CursoSeleccionado = "";
+let PrecioCurso = 0;
 
 function seleccionarCurso(nombre, precio) {
-  cursoSeleccionado = nombre;
-  precioCurso = precio;
+  CursoSeleccionado = nombre;
+  PrecioCurso = precio;
   document.getElementById("cursoSeleccionado").value = nombre;
   document.getElementById("precioCurso").value = precio;
   window.location.href = "#registro";
 }
 
-const form = document.getElementById("registroForm");
-
-form.addEventListener("submit", async (e) => {
+const forma = document.getElementById("registroForm");
+forma.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const nombre = form.nombre.value;
-  const correo = form.correo.value;
+  const nombre = forma.nombre.value;
+  const correo = forma.correo.value;
 
-  const response = await fetch("/create-checkout-session", {
+  const respuesta = await fetch("/create-checkout-session", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      nombre,
-      correo,
-      curso: cursoSeleccionado,
-      precio: precioCurso
-    })
+    body: JSON.stringify({ nombre, correo, curso: CursoSeleccionado, precio: PrecioCurso })
   });
 
-  const datos = await response.json();
-  if (datos.url) {
-    window.location.href = datos.url;
-  }
+  const datos = await respuesta.json();
+  if (datos.url) window.location.href = datos.url;
 });
