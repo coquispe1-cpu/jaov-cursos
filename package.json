@@ -1,7 +1,6 @@
 {
   "name": "jaov-cursos",
   "version": "1.0.0",
-  "description": "Servidor para cursos JAOV",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
