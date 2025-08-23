@@ -1,32 +1,68 @@
-import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import Stripe from "stripe";
+import { google } from "googleapis";
+import nodemailer from "nodemailer";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
-// Configurar __dirname en ES Modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
-// Servir archivos estáticos (CSS, JS, imágenes)
-app.use(express.static(path.join(__dirname)));
+// Stripe
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-// Ruta raíz: index.html
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+// Google Sheets
+const auth = new google.auth.GoogleAuth({
+  credentials: JSON.parse(process.env.GOOGLE_CREDS),
+  scopes: ['https://www.googleapis.com/auth/spreadsheets']
+});
+const sheets = google.sheets({ version: 'v4', auth });
+
+// Rutas
+app.get("/", (req, res) => res.sendFile('index.html', { root: './public' }));
+
+app.post("/pago", async (req, res) => {
+  const { nombre, correo, curso, precio } = req.body;
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: precio * 100,
+      currency: 'usd',
+      receipt_email: correo
+    });
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: 'Registros!A:D',
+      valueInputOption: 'USER_ENTERED',
+      resource: { values: [[nombre, correo, curso, precio, new Date().toLocaleString()]] }
+    });
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'TU_CORREO@gmail.com',
+        pass: 'TU_CONTRASEÑA_APP'
+      }
+    });
+
+    await transporter.sendMail({
+      from: '"JAOV Cursos" <TU_CORREO@gmail.com>',
+      to: correo,
+      subject: 'Inscripción confirmada',
+      text: `Hola ${nombre}, te has inscrito correctamente al curso ${curso}.`
+    });
+
+    res.json({ clientSecret: paymentIntent.client_secret });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error en el pago");
+  }
 });
 
-// Rutas de éxito y cancelación
-app.get('/exito', (req, res) => {
-  res.sendFile(path.join(__dirname, 'éxito.html'));
-});
-
-app.get('/cancelar', (req, res) => {
-  res.sendFile(path.join(__dirname, 'cancelar.html'));
-});
-
-// Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`Servidor escuchando en puerto ${PORT}`);
-});
+app.listen(port, () => console.log(`Servidor corriendo en puerto ${port}`));
