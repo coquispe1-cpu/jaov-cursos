@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "jaov-cursos",
+  "private_key_id": "d52f6301903563ce6e5b12ff8c62b4d4ea021261",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCxn3j4FZVD3Nbg\nyyCCu63eZ3Rl7UkvRWR/cmfXxdaaswKEZzoLw1bxK1w6ojAg4bmYZf5vtcK9DkX4\npSiazQqDxu/meq/DhitGCR498OkOu9a1OePfqMPrWlrsqtMqbVatPY/feCMDVZaB\nf+vHC64HYTCmsmAyDVAJaj4WbV1FClZyUeTgaLYJEN6vg9K+47VEJdK3ncPwoKYq\nPFnZmZ+eWCnW3UHActSDNXjkXslOk+VMLc3wN45kHGPs0jlcIIMreSbKPlakT/Qb\n7HRoBrFz5ecwBt2aAwoyDmxjfyg264DF8j6H0hOcx/j8zRrfSXS5xksAiK68Hiy0\nzcTV8Z77AgMBAAECggEAMRhdpOC+VbgcUp0CmvAKMl+RDj1EjcLV8N4r8rmVxEO3\nbeZkZmzzQozUHMbIm8YYeRWz+qeYMI5Z68ymyQbkoaDinWeK3nXezyhlCgTlPjPQ\nOF5MbH0mzg429JSQ8nivTQonksKPlvPYummjv2wsiZClFGZYbW09kqShjaxj69lm\nPE6rujPkBdSNHv/7J7xBitRZ5I54U8swo57BtjLOI+hmmPkOGg6FBI6p30JuzCMU\nZhZDsESPbHmbUirB7+/qOCG0J1aX/EEpH5OC4i1QRx+3tHtREhjAh9ceCzr0Cek2\nb/Gpi0WccnRR1HHfqpoEYybiNH+3oqQoTeMdn6TXGQKBgQDZurrsFei6eXIVkZ0A\nURTJPF0ncnDOEM4a8UEywjLAP8u3ZGrQ3/jXiiKubdzi11XR2fRLaXq4kZwsrzR2\na1Z2q1F9iGrOgwMd73eTEC259+t/Ar8CjfnKamkDetdODMIjX4Z0aVX2rFj/M4NT\nqvt3JxPkn3JmHZ3q5yxGmAsUEwKBgQDQ2A2R38gTVeVOfWncnYNhe6KWGe7CN4jS\n0dLZhQwYiBU71285ikgg1vZkmSQ1jm2lFaJpBFs6RjriruDwIgywBmuQHXl2PZ6H\nvjOKPjOegg/rM7B7y97tl48N2W2aHnE8pzzQWGWarj2xOikCwh60M+LnccHZI2eB\nSsYRQ4aWeQKBgG6fs21UTGTCY7aVv2Fz0M3V/7aVLL9mRnHl9ixmAwcu4sCRIrxx\nr6tDog9h/oK6yf3PcZIHS7UPNnx1oIAyVUICFWtkrm+ynRjOnMB5zeHZFyv3JzmT\nDUFNA4IjHdWoIdN7K4NmKaklNCql76nJC+8kSbU1VhiQH7ZEMnjDs41FAoGATTJf\nqbk/eq44ic/f7rWml8Ucr0E8uTvP7qWyu8brVrIOr0UODwXnbYQoJb1Z3hYcv3YE\nx67djefh4mLkML9VU0e8QNQ0TpmuXNzYrlQZvpCzE6zSoqAUclyge20Qj3SLRPFI\nkHbsb8XSdg1alXNt6Ax55jVtgzcMDoW2OzFrsXkCgYBqxMvUaYdUAePPOROYjHRg\nsQUvoTgiBvlS6eFlhR7iT7b0rlsF38WbkJAot/GNnQBhmeUX8mfgsUNZhI3E00sc\nuWKRUcpzD7E+xgd7yXVgoYqIK0rq8RTr8YUGgnhNZub3wPuzfqC4evqzFnZP+3sz\nlITM/dfHJt0KciLf0hCOTg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "jaov-service@jaov-cursos.iam.gserviceaccount.com",
+  "client_id": "113594794622020923279",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/jaov-service%40jaov-cursos.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
